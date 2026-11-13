@@ -218,3 +218,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Downloaded market data. The leading slash matters: a bare "data/" would also
+# ignore the src/signal_lab/data/ package.
+/data/

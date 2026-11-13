@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "quant-signal-lab"
+version = "0.1.0"
+description = "A research platform for testing equity trading signals."
+readme = "README.md"
+requires-python = ">=3.13"
+license = { file = "LICENSE" }
+dependencies = [
+    "pandas>=3.0",
+    "pyarrow>=20",
+    "yfinance>=1.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+signal-lab = "signal_lab.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/signal_lab"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m 'not network'"
+markers = ["network: calls the real yfinance API (run with: pytest -m network)"]
